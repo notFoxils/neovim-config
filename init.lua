@@ -631,13 +631,14 @@ require('lazy').setup({
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
-        --
+        cssls = {},
+        css_variables = {},
+
+        pylsp = {},
 
         luau_lsp = {},
 
         ts_ls = {},
-
-        pylsp = {},
 
         intelephense = {
           settings = {
@@ -683,7 +684,10 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
-      require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+      require('mason-tool-installer').setup {
+        ensure_installed = ensure_installed,
+      }
 
       require('mason-lspconfig').setup {
         handlers = {
