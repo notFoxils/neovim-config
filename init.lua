@@ -637,6 +637,8 @@ require('lazy').setup({
         cssls = {},
         css_variables = {},
 
+        jdtls = {},
+
         pylsp = {
           settings = {
             pylsp = {
