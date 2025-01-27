@@ -631,10 +631,28 @@ require('lazy').setup({
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
+
+        html = {},
+
         cssls = {},
         css_variables = {},
 
-        pylsp = {},
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                autopep8 = {
+                  enabled = false,
+                },
+                pycodestyle = {
+                  enabled = false,
+                  ignore = { 'W391' },
+                  maxLineLength = 80,
+                },
+              },
+            },
+          },
+        },
 
         luau_lsp = {},
 
