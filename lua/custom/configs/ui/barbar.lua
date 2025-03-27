@@ -2,23 +2,23 @@ local function setupKeybinds()
   local map = vim.api.nvim_set_keymap
   local opts = { noremap = true, silent = true }
 
-  map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
-  map('n', '<A-.>', '<Cmd>BufferPrevious<CR>', opts)
+  map('n', '<C-,>', '<Cmd>BufferPrevious<CR>', opts)
+  map('n', '<C-.>', '<Cmd>BufferPrevious<CR>', opts)
 
-  map('n', '<A-<>', '<Cmd>BufferPrevious<CR>', opts)
-  map('n', '<A->>', '<Cmd>BufferPrevious<CR>', opts)
+  map('n', '<C-<>', '<Cmd>BufferPrevious<CR>', opts)
+  map('n', '<C->>', '<Cmd>BufferPrevious<CR>', opts)
 
   do
     -- Map Alt + 1->9->0 to their respective BufferGoto commands
     for i = 1, 9, 1 do
-      map('n', '<A-' .. i .. '>', '<Cmd>BufferGoto ' .. i .. '<CR>', opts)
+      map('n', '<C-' .. i .. '>', '<Cmd>BufferGoto ' .. i .. '<CR>', opts)
     end
-    map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
+    map('n', '<C-0>', '<Cmd>BufferLast<CR>', opts)
   end
 
-  map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
+  map('n', '<C-p>', '<Cmd>BufferPin<CR>', opts)
 
-  map('n', '<A-q>', '<Cmd>BufferClose<CR>', opts)
+  map('n', '<C-q>', '<Cmd>BufferClose<CR>', opts)
 
   map('n', '<C-p>', '<Cmd>BufferPick<CR>', opts)
   map('n', '<C-s-p>', '<Cmd>BufferPickDelete<CR>', opts)
