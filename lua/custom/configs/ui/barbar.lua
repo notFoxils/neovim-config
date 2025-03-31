@@ -3,10 +3,10 @@ local function setupKeybinds()
   local opts = { noremap = true, silent = true }
 
   map('n', '<C-,>', '<Cmd>BufferPrevious<CR>', opts)
-  map('n', '<C-.>', '<Cmd>BufferPrevious<CR>', opts)
+  map('n', '<C-.>', '<Cmd>BufferNext<CR>', opts)
 
   map('n', '<C-<>', '<Cmd>BufferPrevious<CR>', opts)
-  map('n', '<C->>', '<Cmd>BufferPrevious<CR>', opts)
+  map('n', '<C->>', '<Cmd>BufferNext<CR>', opts)
 
   do
     -- Map Alt + 1->9->0 to their respective BufferGoto commands

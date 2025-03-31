@@ -612,6 +612,7 @@ require('lazy').setup({
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -628,7 +629,26 @@ require('lazy').setup({
           capabilities = capabilities,
         },
 
+        lemminx = {
+          capabilities = capabilities,
+        },
+
         jdtls = {
+          settings = {
+            java = {
+              format = {
+                comments = { enabled = false },
+                enabled = true,
+                insertSpaces = true,
+                settings = {
+                  url = vim.fn.stdpath 'config' .. '/codestyle/java.xml',
+                  profile = 'FoxilsStyle',
+                },
+                tabSize = 4,
+              },
+              memberSortOrder = 'SF, SI, SM, F, I, C, M, T', -- Static Fields, Static Initializers, Static Methods, Fields, Initializers, Constructors, Methods, Types
+            },
+          },
           capabilities = capabilities,
         },
 
@@ -661,6 +681,9 @@ require('lazy').setup({
               },
             },
           },
+        },
+
+        phpactor = {
           capabilities = capabilities,
         },
 
@@ -669,12 +692,17 @@ require('lazy').setup({
         },
 
         html = {
+          filetypes = { 'html', 'templ', 'php' },
           settings = {
             html = {
               format = {
                 enable = true,
+
                 indentInnerHtml = true,
                 insertSpaces = true,
+
+                templating = true,
+
                 tabSize = 4,
               },
             },
@@ -717,6 +745,10 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         handlers = {
           function(server_name)
+            if (server_name == 'intelephense' and not vim.fn.has 'win32') or (server_name == 'phpactor' and vim.fn.has 'win32') then
+              return
+            end
+
             local server = servers[server_name] or {}
             -- This handles overriding only values explicitly passed
             -- by the server configuration above. Useful when disabling
