@@ -1,3 +1,38 @@
+local function getKeybinds()
+  local opts = { noremap = true, silent = true }
+
+  local binds = {}
+
+  table.insert(binds, { '<C-,>', '<Cmd>BufferPrevious<CR>', opts = opts })
+  table.insert(binds, { '<C-.>', '<Cmd>BufferNext<CR>', opts = opts })
+
+  table.insert(binds, { '<C-<>', '<Cmd>BufferPrevious<CR>', opts = opts })
+  table.insert(binds, { '<C->>', '<Cmd>BufferNext<CR>', opts = opts })
+
+  do
+    -- Map Alt + 1->9->0 to their respective BufferGoto commands
+    for i = 1, 9, 1 do
+      table.insert(binds, { '<C-' .. i .. '>', '<Cmd>BufferGoto ' .. i .. '<CR>', opts = opts })
+    end
+    table.insert(binds, { '<C-0>', '<Cmd>BufferLast<CR>', opts = opts })
+  end
+
+  table.insert(binds, { '<C-p>', '<Cmd>BufferPin<CR>', opts = opts })
+
+  table.insert(binds, { '<C-q>', '<Cmd>BufferClose<CR>', opts = opts })
+
+  table.insert(binds, { '<C-p>', '<Cmd>BufferPick<CR>', opts = opts })
+  table.insert(binds, { '<C-s-p>', '<Cmd>BufferPickDelete<CR>', opts = opts })
+
+  table.insert(binds, { '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts = opts })
+  table.insert(binds, { '<Space>bn', '<Cmd>BufferOrderByName<CR>', opts = opts })
+  table.insert(binds, { '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts = opts })
+  table.insert(binds, { '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts = opts })
+  table.insert(binds, { '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts = opts })
+
+  return binds
+end
+
 return {
   'romgrk/barbar.nvim',
   version = '*',
@@ -8,5 +43,8 @@ return {
   init = function()
     vim.g.barbar_auto_setup = false
   end,
-  config = require 'custom.configs.ui.barbar',
+  opts = {
+    hide = { extensions = true },
+  },
+  keys = getKeybinds,
 }

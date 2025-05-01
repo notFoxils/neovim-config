@@ -156,10 +156,14 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
+vim.opt.termguicolors = true
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.opt.termguicolors = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
@@ -612,7 +616,6 @@ require('lazy').setup({
       --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
 
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -625,30 +628,15 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
 
+        bashls = {
+          capabilities = capabilities,
+        },
+
         clangd = {
           capabilities = capabilities,
         },
 
         lemminx = {
-          capabilities = capabilities,
-        },
-
-        jdtls = {
-          settings = {
-            java = {
-              format = {
-                comments = { enabled = false },
-                enabled = true,
-                insertSpaces = true,
-                settings = {
-                  url = vim.fn.stdpath 'config' .. '/codestyle/java.xml',
-                  profile = 'FoxilsStyle',
-                },
-                tabSize = 4,
-              },
-              memberSortOrder = 'SF, SI, SM, F, I, C, M, T', -- Static Fields, Static Initializers, Static Methods, Fields, Initializers, Constructors, Methods, Types
-            },
-          },
           capabilities = capabilities,
         },
 
@@ -743,9 +731,16 @@ require('lazy').setup({
       }
 
       require('mason-lspconfig').setup {
+        ensure_installed = {},
+        automatic_installation = false,
         handlers = {
           function(server_name)
-            if (server_name == 'intelephense' and not vim.fn.has 'win32') or (server_name == 'phpactor' and vim.fn.has 'win32') then
+            --if (server_name == 'intelephense' and not vim.fn.has 'win32') or (server_name == 'phpactor' and vim.fn.has 'win32') then
+            --  print(server_name, vim.fn.has('win32'))
+            --  return
+            --end
+
+            if server_name == 'jdtls' then -- idk bro
               return
             end
 
@@ -759,6 +754,9 @@ require('lazy').setup({
         },
       }
     end,
+  },
+  {
+    'mfussenegger/nvim-jdtls',
   },
 
   { -- Autoformat
