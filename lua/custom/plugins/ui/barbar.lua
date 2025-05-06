@@ -47,4 +47,5 @@ return {
     hide = { extensions = true },
   },
   keys = getKeybinds,
+  lazy = false,
 }

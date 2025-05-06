@@ -29,6 +29,7 @@ return {
     on_attach = onAttach,
     view = {
       side = 'right',
+      width = 50,
     },
     filters = {
       dotfiles = true,
