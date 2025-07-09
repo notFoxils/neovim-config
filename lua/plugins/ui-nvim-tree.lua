@@ -1,9 +1,9 @@
 local function setupKeybinds(bufferNumber)
-  require('nvim-tree.api').config.mappings.default_on_attach(bufferNumber)
+  require("nvim-tree.api").config.mappings.default_on_attach(bufferNumber)
 
   local function opts(desc)
     return {
-      desc = 'nvim-tree: ' .. desc,
+      desc = "nvim-tree: " .. desc,
       -- buffer = bufferNumber,
       noremap = true,
       silent = true,
@@ -11,8 +11,8 @@ local function setupKeybinds(bufferNumber)
     }
   end
 
-  vim.keymap.set('n', '<C-n>', '<cmd>NvimTreeToggle<CR>', opts 'Toggle Window')
-  vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeFocus<CR>', opts 'Focus Window')
+  vim.keymap.set("n", "<C-n>",     "<cmd>NvimTreeToggle<CR>", opts("Toggle Window"))
+  vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>",  opts("Focus Window"))
 end
 
 local function onAttach(bufferNumber)
@@ -20,19 +20,18 @@ local function onAttach(bufferNumber)
 end
 
 return {
-  'nvim-tree/nvim-tree.lua',
-  version = '*',
+  "nvim-tree/nvim-tree.lua",
   dependencies = {
-    'nvim-tree/nvim-web-devicons',
+    "nvim-tree/nvim-web-devicons",
   },
   opts = {
     on_attach = onAttach,
     view = {
-      side = 'right',
+      side = "right",
       width = 50,
     },
     filters = {
-      dotfiles = true,
+      git_ignored = false,
     },
   },
   lazy = false,
