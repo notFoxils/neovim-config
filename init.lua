@@ -19,6 +19,10 @@ vim.opt.expandtab = true
 vim.opt.completeopt = "menuone,noselect,popup"
 vim.opt.winborder = "rounded"
 
+vim.diagnostic.config({
+    virtual_lines = true,
+})
+
 vim.schedule(function()
     vim.opt.clipboard = "unnamedplus"
 end)
@@ -35,3 +39,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
 require("misc.lazy")
 
 vim.lsp.enable("lua-ls")
+vim.cmd.colorscheme("gruvbox")

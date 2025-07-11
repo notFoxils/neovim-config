@@ -45,7 +45,7 @@ return {
     init = onInit,
     opts = {
         hide = {
-                extensions = true
+            extensions = true
         },
     },
     lazy = false,
