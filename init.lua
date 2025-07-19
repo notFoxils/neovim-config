@@ -1,5 +1,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -29,5 +33,22 @@ end)
 
 require("misc.lazy")
 
-vim.lsp.enable("gopls")
-vim.lsp.enable("lua_ls")
+vim.lsp.enable({
+    "buf_ls",
+    "gopls",
+    "kotlin_language_server",
+    "lua_ls",
+})
+
+require("nvim-treesitter").install({
+    "java",
+    "proto",
+    "go",
+    "kotlin",
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function (event)
+        vim.treesitter.start(event.buf)
+    end
+})
