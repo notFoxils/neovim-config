@@ -8,27 +8,28 @@ vim.g.loaded_ruby_provider = 0
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.opt.number = true
-vim.opt.cursorline = true
+vim.o.number = true
+vim.o.relativenumber = true;
+vim.o.cursorline = true
 
-vim.opt.wrap = false
-vim.opt.showmode = false
+vim.o.wrap = false
+vim.o.showmode = false
 
-vim.opt.scrolloff = 10
+vim.o.scrolloff = 10
 
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
 
-vim.opt.completeopt = "menuone,noselect,popup"
-vim.opt.winborder = "rounded"
+vim.o.completeopt = "menuone,noselect,popup"
+vim.o.winborder = "rounded"
 
 vim.diagnostic.config({
     virtual_lines = true,
 })
 
 vim.schedule(function()
-    vim.opt.clipboard = "unnamedplus"
+    vim.o.clipboard = "unnamedplus"
 end)
 
 require("misc.lazy")
@@ -36,15 +37,17 @@ require("misc.lazy")
 vim.lsp.enable({
     "buf_ls",
     "gopls",
-    "kotlin_language_server",
+--    "kotlin_language_server",
     "lua_ls",
+    "rust_analyzer",
 })
 
 require("nvim-treesitter").install({
-    "java",
-    "proto",
     "go",
+    "java",
     "kotlin",
+    "proto",
+    "rust",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {
