@@ -36,16 +36,20 @@ require("misc.lazy")
 
 vim.lsp.enable({
     "buf_ls",
+    "cssls",
     "gopls",
+    "html",
 --    "kotlin_language_server",
     "lua_ls",
     "rust_analyzer",
 })
 
 require("nvim-treesitter").install({
+    "css",
     "go",
+    "html",
     "java",
-    "kotlin",
+--    "kotlin",
     "proto",
     "rust",
 })
