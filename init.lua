@@ -35,6 +35,7 @@ end)
 require("misc.lazy")
 
 vim.lsp.enable({
+    "bashls",
     "buf_ls",
     "cssls",
     "gopls",
@@ -42,16 +43,22 @@ vim.lsp.enable({
 --    "kotlin_language_server",
     "lua_ls",
     "rust_analyzer",
+    "slangd",
+    "ts_ls",
 })
 
 require("nvim-treesitter").install({
+    "bash",
     "css",
     "go",
     "html",
     "java",
+    "javascript",
 --    "kotlin",
     "proto",
     "rust",
+    "slang",
+    "typescript",
 })
 
 vim.api.nvim_create_autocmd("LspAttach", {

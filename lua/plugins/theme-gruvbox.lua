@@ -5,6 +5,6 @@ return {
         vim.cmd.colorscheme("gruvbox")
     end,
     opts = {
-        contrast = "medium",
+        contrast = "hard",
     },
 }
