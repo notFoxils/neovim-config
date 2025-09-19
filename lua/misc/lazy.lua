@@ -21,4 +21,7 @@ require("lazy").setup({
   install = {
       colorscheme = { "gruvbox" }
   },
+  git = {
+      timeout = 480,
+  },
 })

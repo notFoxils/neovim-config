@@ -1,5 +1,5 @@
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+--vim.g.loaded_netrw = 0
+--vim.g.loaded_netrwPlugin = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
@@ -24,6 +24,15 @@ vim.o.expandtab = true
 vim.o.completeopt = "menuone,noselect,popup"
 vim.o.winborder = "rounded"
 
+vim.o.termguicolors = true
+
+if vim.fn.has("win64") then
+    vim.o.shell = "bash.exe"
+    vim.o.shellcmdflag = "-c"
+    vim.o.shellxescape = ""
+    vim.o.shellxquote = ""
+end
+
 vim.diagnostic.config({
     virtual_lines = true,
 })
@@ -40,6 +49,7 @@ vim.lsp.enable({
     "cssls",
     "gopls",
     "html",
+    "jsonls",
 --    "kotlin_language_server",
     "lua_ls",
     "rust_analyzer",
@@ -54,6 +64,7 @@ require("nvim-treesitter").install({
     "html",
     "java",
     "javascript",
+    "json",
 --    "kotlin",
     "proto",
     "rust",
@@ -66,3 +77,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.treesitter.start(event.buf)
     end
 })
+
+
+vim.cmd.colorscheme("gruvbox")
