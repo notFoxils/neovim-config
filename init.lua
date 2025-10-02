@@ -61,6 +61,7 @@ vim.diagnostic.config({
 })
 
 vim.lsp.enable({
+    "basedpyright",
     "bashls",
     "buf_ls",
     "cssls",
@@ -87,6 +88,7 @@ require("nvim-treesitter").install({
     "json",
     --"kotlin",
     "proto",
+    "python",
     "rust",
     "slang",
     "typescript",
