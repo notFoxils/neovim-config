@@ -29,4 +29,5 @@ return {
         }
     },
     build = "cargo build --release",
+    version = "1.7.0"
 }

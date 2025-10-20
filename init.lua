@@ -64,9 +64,11 @@ vim.lsp.enable({
     "basedpyright",
     "bashls",
     "buf_ls",
+    "clangd",
     "cssls",
     "gopls",
     "html",
+    "jdtls",
     "jsonls",
     --"kotlin_language_server",
     "lua_ls",
@@ -80,6 +82,7 @@ require("misc.lazy")
 
 require("nvim-treesitter").install({
     "bash",
+    "cpp",
     "css",
     "go",
     "html",
