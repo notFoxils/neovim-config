@@ -5,6 +5,8 @@ return {
         vim.cmd.colorscheme("gruvbox")
     end,
     opts = {
-        contrast = "hard",
+        palette_overrides = {
+            dark0 = "#202020"
+        },
     },
 }
