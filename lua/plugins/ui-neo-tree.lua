@@ -20,19 +20,16 @@ local function onAttach(bufferNumber)
 end
 
 return {
-    "nvim-tree/nvim-tree.lua",
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
     dependencies = {
-        "nvim-tree/nvim-web-devicons",
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "nvim-tree/nvim-web-devicons", -- optional, but recommended
     },
+    lazy = false, -- neo-tree will lazily load itself
+    ---@module 'neo-tree'
+    ---@type neotree.Config
     opts = {
-        on_attach = onAttach,
-        view = {
-            side = "right",
-            width = 50,
-        },
-        filters = {
-            git_ignored = false,
-        },
     },
-    lazy = false,
 }
