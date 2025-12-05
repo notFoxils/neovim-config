@@ -1,4 +1,4 @@
----@module "lazy.nvim"
+---@module "lazy.types"
 ---@type LazyPluginSpec
 return {
     "nvim-neo-tree/neo-tree.nvim",
@@ -8,7 +8,7 @@ return {
         "MunifTanjim/nui.nvim",
         "nvim-tree/nvim-web-devicons", -- optional, but recommended
     },
-    ---@module 'neo-tree'
+    ---@module "neo-tree"
     ---@type neotree.Config
     opts = {
         window = {

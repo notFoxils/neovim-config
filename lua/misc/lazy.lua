@@ -14,6 +14,8 @@ if not vim.uv.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+---@module "lazy.types"
+---@type LazyConfig
 require("lazy").setup({
   spec = {
       { import = "plugins" },

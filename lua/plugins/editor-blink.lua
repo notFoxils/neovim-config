@@ -1,3 +1,5 @@
+---@module "lazy.types"
+---@type LazyPluginSpec
 return {
     "saghen/blink.cmp",
     dependencies = { "rafamadriz/friendly-snippets" },
@@ -11,7 +13,7 @@ return {
             nerd_font_variant = "mono",
         },
         completion = {
-            documentation = { auto_show = false },
+            documentation = { auto_show = true },
         },
         sources = {
             default = {

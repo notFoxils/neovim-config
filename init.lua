@@ -1,6 +1,6 @@
 -- Vim Environment Globals
---vim.g.loaded_netrw = 0
---vim.g.loaded_netrwPlugin = 0
+vim.g.loaded_netrw = 0
+vim.g.loaded_netrwPlugin = 0
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
@@ -39,7 +39,6 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
-vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.o.winborder = "rounded"
 
 vim.o.termguicolors = true
@@ -70,7 +69,8 @@ vim.lsp.enable({
     "html",
     "jdtls",
     "jsonls",
-    --"kotlin_language_server",
+    --"kotlin_language_server", -- NOTE: 3rd Party
+    "kotlin_lsp", -- NOTE: Official from Kotlin-org
     "lua_ls",
     "rust_analyzer",
     "slangd",
@@ -89,7 +89,7 @@ require("nvim-treesitter").install({
     "java",
     "javascript",
     "json",
-    --"kotlin",
+    "kotlin",
     "proto",
     "python",
     "rust",
@@ -98,8 +98,11 @@ require("nvim-treesitter").install({
     "yaml",
 })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-    callback = function(event)
-        vim.treesitter.start(event.buf)
-    end
-})
+vim.api.nvim_create_autocmd(
+    "LspAttach",
+    {
+        callback = function(event)
+            vim.treesitter.start(event.buf)
+        end
+    }
+)

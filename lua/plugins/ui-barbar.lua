@@ -36,6 +36,8 @@ local function getKeybinds()
     return binds
 end
 
+---@module "lazy.types"
+---@type LazyPluginSpec
 return {
     "romgrk/barbar.nvim",
     dependencies = {

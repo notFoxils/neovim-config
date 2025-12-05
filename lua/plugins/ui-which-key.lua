@@ -1,6 +1,10 @@
+---@module "lazy.types"
+---@type LazyPluginSpec
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    ---@module "which-key"
+    ---@type wk.Opts
     opts = {
         -- delay between pressing a key and opening which-key (milliseconds)
         -- this setting is independent of vim.opt.timeoutlen
