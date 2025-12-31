@@ -74,6 +74,7 @@ vim.lsp.enable({
     "lua_ls",
     "rust_analyzer",
     "slangd",
+    "taplo",
     "ts_ls",
     "yamlls",
 })
@@ -94,6 +95,7 @@ require("nvim-treesitter").install({
     "python",
     "rust",
     "slang",
+    "toml",
     "typescript",
     "yaml",
 })
