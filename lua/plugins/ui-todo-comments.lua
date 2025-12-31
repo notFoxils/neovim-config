@@ -7,6 +7,11 @@ return {
     ---@module "todo-comments"
     ---@type TodoConfig
     opts = {
-        signs = false
+        keywords = {
+            HACK = {
+                alt = { "SAFETY" },
+            },
+        },
+        signs = false,
     },
 }
