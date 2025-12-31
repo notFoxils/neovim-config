@@ -1,6 +1,5 @@
 return {
-  cmd = { "jdtls" },
-  root_markers = { ".git", "mvnw", "gradlew", "build.gradle" },
+  root_markers = { "build.gradle" },
   settings = {
     java = {
       configuration = {
