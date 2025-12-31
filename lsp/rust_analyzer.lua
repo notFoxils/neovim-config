@@ -54,6 +54,18 @@ end
 return {
   cmd = { "rust-analyzer" },
   filetypes = { "rust" },
+  settings = {
+      rust_analyzer = {
+          cargo = {
+              loadoutdirsfromcheck = true,
+          },
+          diagnostics = {
+              disabled = {
+                  unlinked_file = true,
+              },
+          },
+      },
+  },
   root_dir = function(bufnr, on_dir)
     local fname = vim.api.nvim_buf_get_name(bufnr)
     local reused_dir = is_library(fname)
