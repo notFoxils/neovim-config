@@ -7,14 +7,11 @@ local function getKeybinds()
 
     local binds = {}
 
-    table.insert(binds, { "<C-,>", "<Cmd>BufferPrevious<CR>", opts })
-    table.insert(binds, { "<C-.>", "<Cmd>BufferNext<CR>", opts })
-
-    table.insert(binds, { "<C-<>", "<Cmd>BufferPrevious<CR>", opts })
-    table.insert(binds, { "<C->>", "<Cmd>BufferNext<CR>", opts })
+    table.insert(binds, { "<C-h>", "<Cmd>BufferPrevious<CR>", opts })
+    table.insert(binds, { "<C-l>", "<Cmd>BufferNext<CR>", opts })
 
     do -- Map Alt + 1->9->0 to their respective BufferGoto commands
-        for i = 1,9 do
+        for i = 1, 9 do
             table.insert(binds, { "<C-" .. i .. ">", "<Cmd>BufferGoto " .. i .. "<CR>", opts })
         end
         table.insert(binds, { "<C-0>", "<Cmd>BufferLast<CR>", opts })
