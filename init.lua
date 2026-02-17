@@ -79,6 +79,9 @@ vim.lsp.enable({
     "yamlls",
 })
 
+vim.keymap.set("n", "grd", vim.lsp.buf.definition)
+vim.keymap.set("n", "grD", vim.lsp.buf.declaration)
+
 require("misc.lazy")
 
 require("nvim-treesitter").install({
