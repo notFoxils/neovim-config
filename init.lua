@@ -50,9 +50,7 @@ if vim.fn.has("win64") == 1 then
     vim.o.shellxquote = ""
 end
 
-vim.schedule(function()
-    vim.o.clipboard = "unnamedplus"
-end)
+vim.o.clipboard = "unnamedplus"
 -- Vim Options
 
 vim.diagnostic.config({
