@@ -2,17 +2,20 @@
 ---@type LazyPluginSpec
 return {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
-        "nvim-tree/nvim-web-devicons", -- optional, but recommended
+        "nvim-tree/nvim-web-devicons",
     },
     ---@module "neo-tree"
     ---@type neotree.Config
     opts = {
         window = {
             position = "right",
+            mappings = {
+                ["/"] = "noop",
+                ["f"] = "noop",
+            },
         },
         filesystem = {
             filtered_items = {
@@ -24,4 +27,5 @@ return {
     keys = {
         { "<C-n>", "<cmd>Neotree toggle<CR>", mode = "n", desc = "" },
     },
+    branch = "v3.x",
 }

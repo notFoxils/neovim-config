@@ -10,7 +10,7 @@ return {
     ---@type GruvboxConfig
     opts = {
         palette_overrides = {
-            dark0 = "#202020"
+            dark0 = "#202020",
         },
     },
 }

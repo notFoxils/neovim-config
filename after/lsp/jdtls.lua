@@ -8,8 +8,8 @@
 -- This may be removed depending on what https://github.com/neovim/neovim/issues/33577 introduces
 
 return {
-  cmd = {
-      "jdtls",
-      "--jvm-arg=-Dosgi.configuration.area=@user.home/.config/osgi"
-  },
+    cmd = {
+        "jdtls",
+        "--jvm-arg=-Dosgi.configuration.area=@user.home/.config/osgi",
+    },
 }

@@ -25,13 +25,13 @@
 
 local bin_name = "slangd"
 
-if vim.fn.has "win32" == 1 then
-  bin_name = "slangd.exe"
+if vim.fn.has("win32") == 1 then
+    bin_name = "slangd.exe"
 end
 
 ---@type vim.lsp.Config
 return {
-  cmd = { bin_name },
-  filetypes = { "hlsl", "shaderslang" },
-  root_markers = { ".git" },
+    cmd = { bin_name },
+    filetypes = { "hlsl", "shaderslang" },
+    root_markers = { ".git" },
 }

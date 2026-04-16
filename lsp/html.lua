@@ -24,13 +24,13 @@
 
 ---@type vim.lsp.Config
 return {
-  cmd = { 'bash', '-c', '$(type -P vscode-html-language-server) --stdio' },
-  filetypes = { 'html', 'templ' },
-  root_markers = { 'package.json', '.git' },
-  settings = {},
-  init_options = {
-    provideFormatter = true,
-    embeddedLanguages = { css = true, javascript = true },
-    configurationSection = { 'html', 'css', 'javascript' },
-  },
+    cmd = { "bash", "-c", "$(type -P vscode-html-language-server) --stdio" },
+    filetypes = { "html", "templ" },
+    root_markers = { "package.json", ".git" },
+    settings = {},
+    init_options = {
+        provideFormatter = true,
+        embeddedLanguages = { css = true, javascript = true },
+        configurationSection = { "html", "css", "javascript" },
+    },
 }

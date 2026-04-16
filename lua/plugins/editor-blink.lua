@@ -28,8 +28,8 @@ return {
         },
         fuzzy = {
             implementation = "prefer_rust_with_warning",
-        }
+        },
     },
     build = "cargo build --release",
-    version = "1.*"
+    version = "1.*",
 }

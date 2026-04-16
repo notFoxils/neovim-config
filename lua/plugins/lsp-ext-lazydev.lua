@@ -2,7 +2,6 @@
 ---@type LazyPluginSpec
 return {
     "folke/lazydev.nvim",
-    ft = "lua",
     ---@module "lazydev"
     ---@type lazydev.Config
     opts = {
@@ -12,4 +11,5 @@ return {
             { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         },
     },
+    ft = "lua",
 }

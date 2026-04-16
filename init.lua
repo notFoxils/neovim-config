@@ -83,11 +83,8 @@ vim.keymap.set("n", "grD", vim.lsp.buf.declaration)
 
 require("misc.lazy")
 
-vim.api.nvim_create_autocmd(
-    "LspAttach",
-    {
-        callback = function(event)
-            vim.treesitter.start(event.buf)
-        end
-    }
-)
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(event)
+        vim.treesitter.start(event.buf)
+    end,
+})

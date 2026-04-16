@@ -1,36 +1,42 @@
-local function onInit()
+local function on_init()
     vim.g.barbar_auto_setup = false
 end
 
-local function getKeybinds()
-    local opts = { noremap = true, silent = true }
+local function setup_plugin(loaded_plugin, opts)
+    if not opts then
+        return
+    end
 
-    local binds = {}
+    loaded_plugin.setup(opts)
+end
 
-    table.insert(binds, { "<C-h>", "<Cmd>BufferPrevious<CR>", opts })
-    table.insert(binds, { "<C-l>", "<Cmd>BufferNext<CR>", opts })
+local function setup_keybinds()
+    ---@type vim.keymap.set.Opts
+    local opts = { silent = true }
+
+    vim.keymap.set("n", "<C-h>", "<Cmd>BufferPrevious<CR>", opts)
+    vim.keymap.set("n", "<C-h>", "<Cmd>BufferPrevious<CR>", opts)
+    vim.keymap.set("n", "<C-l>", "<Cmd>BufferNext<CR>", opts)
 
     do -- Map Alt + 1->9->0 to their respective BufferGoto commands
         for i = 1, 9 do
-            table.insert(binds, { "<C-" .. i .. ">", "<Cmd>BufferGoto " .. i .. "<CR>", opts })
+            vim.keymap.set("n", "<C-" .. i .. ">", "<Cmd>BufferGoto " .. i .. "<CR>", opts)
         end
-        table.insert(binds, { "<C-0>", "<Cmd>BufferLast<CR>", opts })
+        vim.keymap.set("n", "<C-0>", "<Cmd>BufferLast<CR>", opts)
     end
 
-    table.insert(binds, { "<C-p>", "<Cmd>BufferPin<CR>", opts })
+    vim.keymap.set("n", "<C-p>", "<Cmd>BufferPin<CR>", opts)
 
-    table.insert(binds, { "<C-q>", "<Cmd>BufferClose<CR>", opts })
+    vim.keymap.set("n", "<C-q>", "<Cmd>BufferClose<CR>", opts)
 
-    table.insert(binds, { "<C-p>", "<Cmd>BufferPick<CR>", opts })
-    table.insert(binds, { "<C-s-p>", "<Cmd>BufferPickDelete<CR>", opts })
+    vim.keymap.set("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
+    vim.keymap.set("n", "<C-s-p>", "<Cmd>BufferPickDelete<CR>", opts)
 
-    table.insert(binds, { "<Space>bb", "<Cmd>BufferOrderByBufferNumber<CR>", opts })
-    table.insert(binds, { "<Space>bn", "<Cmd>BufferOrderByName<CR>", opts })
-    table.insert(binds, { "<Space>bd", "<Cmd>BufferOrderByDirectory<CR>", opts })
-    table.insert(binds, { "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts })
-    table.insert(binds, { "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts })
-
-    return binds
+    vim.keymap.set("n", "<Space>bb", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
+    vim.keymap.set("n", "<Space>bn", "<Cmd>BufferOrderByName<CR>", opts)
+    vim.keymap.set("n", "<Space>bd", "<Cmd>BufferOrderByDirectory<CR>", opts)
+    vim.keymap.set("n", "<Space>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
+    vim.keymap.set("n", "<Space>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
 end
 
 ---@module "lazy.types"
@@ -41,12 +47,17 @@ return {
         "lewis6991/gitsigns.nvim",
         "nvim-tree/nvim-web-devicons",
     },
-    init = onInit,
+    init = on_init,
     opts = {
         hide = {
-            extensions = true
+            extensions = true,
         },
     },
+    config = function(_, opts)
+        local loaded_plugin = require("barbar")
+
+        setup_plugin(loaded_plugin, opts)
+        setup_keybinds()
+    end,
     lazy = false,
-    keys = getKeybinds,
 }
