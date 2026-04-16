@@ -84,25 +84,6 @@ vim.keymap.set("n", "grD", vim.lsp.buf.declaration)
 
 require("misc.lazy")
 
-require("nvim-treesitter").install({
-    "bash",
-    "cpp",
-    "css",
-    "go",
-    "html",
-    "java",
-    "javascript",
-    "json",
-    "kotlin",
-    "proto",
-    "python",
-    "rust",
-    "slang",
-    "toml",
-    "typescript",
-    "yaml",
-})
-
 vim.api.nvim_create_autocmd(
     "LspAttach",
     {
