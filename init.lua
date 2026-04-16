@@ -60,7 +60,6 @@ vim.diagnostic.config({
 })
 
 vim.lsp.enable({
-    "basedpyright",
     "bashls",
     "buf_ls",
     "clangd",
@@ -72,6 +71,7 @@ vim.lsp.enable({
     --"kotlin_language_server", -- NOTE: 3rd Party
     "kotlin_lsp", -- NOTE: Official from Kotlin-org
     "lua_ls",
+    "ruff",
     "rust_analyzer",
     "slangd",
     "taplo",
