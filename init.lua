@@ -57,6 +57,7 @@ end)
 
 vim.diagnostic.config({
     virtual_lines = true,
+    severity_sort = true,
 })
 
 vim.lsp.enable({
