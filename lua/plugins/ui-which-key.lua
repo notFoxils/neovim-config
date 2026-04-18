@@ -39,6 +39,9 @@ return {
                 F12 = "<F12>",
             },
         },
+        triggers = {
+            { "f", mode = "n" },
+        }
     },
     event = "VeryLazy",
 }
