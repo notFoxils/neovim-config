@@ -61,7 +61,7 @@
 
 ---@type vim.lsp.Config
 return {
-    cmd = { "bash", "-c", "$(type -P yaml-language-server) --stdio" },
+    cmd = { "yaml-language-server", "--stdio" },
     filetypes = { "yaml", "yaml.docker-compose", "yaml.gitlab", "yaml.helm-values" },
     root_markers = { ".git" },
     settings = {

@@ -23,7 +23,7 @@
 
 ---@type vim.lsp.Config
 return {
-    cmd = { "bash", "-c", "$(type -P vscode-json-language-server) --stdio" },
+    cmd = { "vscode-json-language-server", "--stdio" },
     filetypes = { "json", "jsonc" },
     init_options = {
         provideFormatter = true,
