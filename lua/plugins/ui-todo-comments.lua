@@ -10,6 +10,9 @@ return {
             HACK = {
                 alt = { "SAFETY" },
             },
+            NOTE = {
+                alt = { "EXAMPLE", "EX" },
+            },
         },
         signs = false,
     },
