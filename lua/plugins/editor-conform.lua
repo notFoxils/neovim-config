@@ -6,6 +6,8 @@ return {
     ---@type conform.setupOpts
     opts = {
         formatters_by_ft = {
+            css = { "prettier" },
+            html = { "prettier" },
             java = { lsp_format = "prefer" },
             javascript = { "prettier" },
             lua = { "stylua" },
