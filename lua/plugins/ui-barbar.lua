@@ -28,6 +28,7 @@ local function setup_keybinds()
     vim.keymap.set("n", "<C-p>", "<Cmd>BufferPin<CR>", opts)
 
     vim.keymap.set("n", "<C-q>", "<Cmd>BufferClose<CR>", opts)
+    vim.keymap.set("n", "<C-s-q>", "<Cmd>BufferRestore<CR>", opts)
 
     vim.keymap.set("n", "<C-p>", "<Cmd>BufferPick<CR>", opts)
     vim.keymap.set("n", "<C-s-p>", "<Cmd>BufferPickDelete<CR>", opts)
